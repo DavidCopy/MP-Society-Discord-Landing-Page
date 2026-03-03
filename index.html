@@ -58,14 +58,15 @@
 
     .gbtn {
       display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--t);
-      font-family: 'Outfit', sans-serif; font-weight: 600;
+      background: var(--p); color: #fff;
+      font-family: 'Outfit', sans-serif; font-weight: 700;
       font-size: 14px; padding: 11px 24px;
-      border-radius: 8px; border: 1px solid var(--b);
+      border-radius: 8px; border: none;
       cursor: pointer; text-decoration: none;
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 28px var(--p25), 0 2px 10px rgba(0,0,0,0.4);
     }
-    .gbtn:hover  { border-color: var(--p); background: var(--p08); transform: translateY(-1px); }
+    .gbtn:hover  { transform: translateY(-2px); box-shadow: 0 0 44px rgba(185,79,232,0.55), 0 4px 16px rgba(0,0,0,0.5); }
     .gbtn:active { transform: translateY(0); }
     .gbtn:focus-visible { outline: 2px solid var(--p); outline-offset: 3px; }
 
