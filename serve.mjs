@@ -35,5 +35,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`\n  MP Society landing page running at:\n  → http://localhost:${PORT}\n`);
+  console.log(`\n  Academy+ sales page running at:\n  → http://localhost:${PORT}\n`);
 });
