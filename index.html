@@ -88,8 +88,8 @@
     }
     .frame img { width: 100%; display: block; }
 
-    .rv { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.34,1.2,0.64,1); }
-    .rv.in { opacity: 1; transform: translateY(0); }
+    .rv { opacity: 0; transform: translateY(12px); filter: blur(12px); transition: opacity 0.9s cubic-bezier(0.34,1.2,0.64,1), transform 0.9s cubic-bezier(0.34,1.2,0.64,1), filter 0.9s cubic-bezier(0.34,1.2,0.64,1); }
+    .rv.in { opacity: 1; transform: translateY(0); filter: blur(0px); }
 
     .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
     .wrap-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
