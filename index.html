@@ -168,12 +168,13 @@
 <body>
 
 <!-- ============================================================ NAV -->
-<nav style="position:sticky;top:0;z-index:100;background:rgba(5,5,5,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--b);">
-  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;height:72px;">
-    <img src="brand_assets/mp-society-logo.png" alt="MP Society" style="height:40px;width:auto;">
+<nav id="main-nav" style="position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 16px;transition:padding 0.3s ease;">
+  <div id="nav-inner" style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:56px;padding:0 24px;border-radius:0;background:transparent;border:1px solid transparent;backdrop-filter:none;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);">
+    <img src="brand_assets/mp-society-logo.png" alt="MP Society" style="height:36px;width:auto;">
     <a href="#apply" class="gbtn">Apply for Academy+</a>
   </div>
 </nav>
+<div style="height:80px;"></div>
 
 <!-- ============================================================ HERO -->
 <section style="position:relative;overflow:hidden;padding:120px 0 100px;">
@@ -208,11 +209,11 @@
       </div>
     </div>
     <div class="rv" style="transition-delay:0.24s;">
-      <p style="font-size:18px;color:var(--m);margin-bottom:16px;line-height:2;max-width:680px;margin-left:auto;margin-right:auto;text-align:left;">
-        Every copywriting course teaches how to write copy.<br>
-        Sometimes they add an outreach method on top that hasn't worked since early 2025.<br>
-        And even if you get lucky and actually get a positive response from a dream client, the chances of you fumbling that first sales call are astronomically high.
-      </p>
+      <div style="font-size:18px;color:var(--m);margin-bottom:16px;line-height:1.9;max-width:620px;margin-left:auto;margin-right:auto;text-align:left;">
+        <p style="margin-bottom:8px;">Every copywriting course teaches how to write copy.</p>
+        <p style="margin-bottom:8px;">Sometimes they add an outreach method on top that hasn't worked since early 2025.</p>
+        <p>And even if you get lucky and actually get a positive response from a dream client, the chances of you fumbling that first sales call are astronomically high.</p>
+      </div>
       <p style="font-size:20px;font-weight:600;margin-bottom:52px;">
         <span class="tp">Academy+ fixes all of that</span> and finally helps you become a complete copywriter that can confidently charge $1,000 from your first ever client — and they will pay it on the spot.
       </p>
@@ -525,6 +526,29 @@
 </footer>
 
 <script>
+  // Nav scroll shrink
+  const navInner = document.getElementById('nav-inner');
+  const mainNav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      mainNav.style.padding = '10px 16px';
+      navInner.style.maxWidth = '820px';
+      navInner.style.background = 'rgba(5,5,5,0.85)';
+      navInner.style.backdropFilter = 'blur(20px)';
+      navInner.style.border = '1px solid rgba(255,255,255,0.07)';
+      navInner.style.borderRadius = '14px';
+      navInner.style.padding = '0 20px';
+    } else {
+      mainNav.style.padding = '12px 16px';
+      navInner.style.maxWidth = '1100px';
+      navInner.style.background = 'transparent';
+      navInner.style.backdropFilter = 'none';
+      navInner.style.border = '1px solid transparent';
+      navInner.style.borderRadius = '0';
+      navInner.style.padding = '0 24px';
+    }
+  }, { passive: true });
+
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
