@@ -123,7 +123,21 @@
       overflow: hidden;
       transition: transform 0.25s cubic-bezier(0.34,1.4,0.64,1), border-color 0.25s ease;
     }
-    .win-card:hover { transform: translateY(-4px); border-color: var(--bp); box-shadow: 0 8px 32px rgba(185,79,232,0.1); }
+    .win-card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(185,79,232,0.9); box-shadow: 0 20px 60px rgba(185,79,232,0.35), 0 0 0 1px rgba(185,79,232,0.2); cursor:zoom-in; }
+    .win-card img { cursor: zoom-in; }
+
+    /* Lightbox */
+    #lightbox { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.92); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:24px; }
+    #lightbox.open { display:flex; }
+    #lightbox img { max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 0 80px rgba(185,79,232,0.3), 0 32px 80px rgba(0,0,0,0.8); object-fit:contain; }
+    #lightbox-close { position:absolute; top:20px; right:24px; color:#fff; font-size:32px; cursor:pointer; opacity:0.6; transition:opacity 0.2s; line-height:1; }
+    #lightbox-close:hover { opacity:1; }
+
+    /* Down arrows */
+    .arrow-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:8px; }
+    .arrow-down { display:flex; justify-content:center; }
+    .arrow-down svg { animation: bounce-down 1.4s ease-in-out infinite; }
+    @keyframes bounce-down { 0%,100% { transform:translateY(0); opacity:0.5; } 50% { transform:translateY(6px); opacity:1; } }
     .win-card img { width: 100%; display: block; max-height: 320px; object-fit: cover; object-position: top; }
 
     /* Review masonry */
@@ -184,7 +198,7 @@
       <p class="d" style="font-size:clamp(28px,4vw,48px);line-height:1;letter-spacing:0.01em;margin-bottom:16px;color:var(--t);">
         YOU CAN LEARN COPYWRITING FOR FREE ON YOUTUBE.
       </p>
-      <p class="d tp" style="font-size:clamp(40px,6.5vw,76px);line-height:1.05;letter-spacing:0.01em;margin-bottom:52px;">
+      <p class="d tp" style="font-size:clamp(32px,5vw,60px);line-height:1.05;letter-spacing:0.01em;margin-bottom:52px;">
         BUT HOW CAN YOU ACTUALLY SIGN A CLIENT AND KEEP HIM HAPPY WITHOUT GETTING FIRED WITHIN A WEEK?
       </p>
     </div>
@@ -262,17 +276,22 @@
       </p>
       <p style="color:var(--m);font-size:17px;line-height:1.7;max-width:560px;">Aspiring copywriters who failed at outreach and getting on calls are now booking calls left and right and making their first $$$ only a few weeks after joining.</p>
     </div>
+    <div class="arrow-row rv" style="margin-bottom:24px;">
+      <div class="arrow-down"><svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="arrow-down" style="animation-delay:0.15s;"><svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="arrow-down" style="animation-delay:0.3s;"><svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    </div>
     <div class="wins-grid">
-      <div class="rv win-card"><img src="Outreach Wins/reply-youve-got-talent.png" alt="You've got some talent"></div>
-      <div class="rv win-card" style="transition-delay:0.06s;"><img src="Outreach Wins/reply-asking-prices.png" alt="Prospect asks for prices"></div>
-      <div class="rv win-card" style="transition-delay:0.12s;"><img src="Outreach Wins/reply-show-me-more.png" alt="Show me more"></div>
-      <div class="rv win-card" style="transition-delay:0.18s;"><img src="Outreach Wins/krish-strategy-call.png" alt="Krish strategy call booked"></div>
-      <div class="rv win-card" style="transition-delay:0.24s;"><img src="Outreach Wins/mantas-roadmap-call.png" alt="Mantas roadmap call"></div>
-      <div class="rv win-card" style="transition-delay:0.30s;"><img src="Outreach Wins/arthur-call-accepted.png" alt="Arthur call accepted"></div>
-      <div class="rv win-card" style="transition-delay:0.36s;"><img src="Outreach Wins/calendly-elliot-booked.png" alt="Elliot Calendly booking"></div>
-      <div class="rv win-card" style="transition-delay:0.42s;"><img src="Outreach Wins/payment-100-succeeded.png" alt="$100 payment succeeded"></div>
-      <div class="rv win-card" style="transition-delay:0.48s;"><img src="Outreach Wins/paypal-141-balance.png" alt="PayPal balance"></div>
-      <div class="rv win-card" style="transition-delay:0.54s;"><img src="Outreach Wins/sales-4234-eur.png" alt="€4,234 total sales"></div>
+      <div class="rv win-card" onclick="openLightbox('Outreach Wins/reply-youve-got-talent.png')"><img src="Outreach Wins/reply-youve-got-talent.png" alt="You've got some talent"></div>
+      <div class="rv win-card" style="transition-delay:0.06s;" onclick="openLightbox('Outreach Wins/reply-asking-prices.png')"><img src="Outreach Wins/reply-asking-prices.png" alt="Prospect asks for prices"></div>
+      <div class="rv win-card" style="transition-delay:0.12s;" onclick="openLightbox('Outreach Wins/reply-show-me-more.png')"><img src="Outreach Wins/reply-show-me-more.png" alt="Show me more"></div>
+      <div class="rv win-card" style="transition-delay:0.18s;" onclick="openLightbox('Outreach Wins/krish-strategy-call.png')"><img src="Outreach Wins/krish-strategy-call.png" alt="Krish strategy call booked"></div>
+      <div class="rv win-card" style="transition-delay:0.24s;" onclick="openLightbox('Outreach Wins/mantas-roadmap-call.png')"><img src="Outreach Wins/mantas-roadmap-call.png" alt="Mantas roadmap call"></div>
+      <div class="rv win-card" style="transition-delay:0.30s;" onclick="openLightbox('Outreach Wins/arthur-call-accepted.png')"><img src="Outreach Wins/arthur-call-accepted.png" alt="Arthur call accepted"></div>
+      <div class="rv win-card" style="transition-delay:0.36s;" onclick="openLightbox('Outreach Wins/calendly-elliot-booked.png')"><img src="Outreach Wins/calendly-elliot-booked.png" alt="Elliot Calendly booking"></div>
+      <div class="rv win-card" style="transition-delay:0.42s;" onclick="openLightbox('Outreach Wins/payment-100-succeeded.png')"><img src="Outreach Wins/payment-100-succeeded.png" alt="$100 payment succeeded"></div>
+      <div class="rv win-card" style="transition-delay:0.48s;" onclick="openLightbox('Outreach Wins/paypal-141-balance.png')"><img src="Outreach Wins/paypal-141-balance.png" alt="PayPal balance"></div>
+      <div class="rv win-card" style="transition-delay:0.54s;" onclick="openLightbox('Outreach Wins/sales-4234-eur.png')"><img src="Outreach Wins/sales-4234-eur.png" alt="€4,234 total sales"></div>
     </div>
   </div>
 </section>
@@ -518,6 +537,12 @@
 </section>
 
 <!-- ============================================================ FOOTER -->
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <span id="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <footer style="border-top:1px solid var(--b);padding:48px 0;">
   <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;">
     <img src="brand_assets/mp-society-logo.png" alt="MP Society" style="height:36px;width:auto;">
@@ -531,6 +556,18 @@
     const hero = document.getElementById('hero-headline');
     if (hero) hero.classList.add('in');
   }, 80);
+
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
   // Nav scroll shrink
   const navInner = document.getElementById('nav-inner');
