@@ -37,7 +37,7 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
       opacity: 0.035; pointer-events: none; z-index: 9998;
     }
-    .d { font-family: 'Bebas Neue', sans-serif; }
+    .d { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; }
     .tp { color: var(--p); }
 
     .btn {
@@ -83,8 +83,14 @@
 
     .frame {
       border-radius: 12px; overflow: hidden;
-      border: 1px solid var(--b);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.02);
+      border: 1px solid var(--bp);
+      box-shadow: 0 0 20px rgba(185,79,232,0.3), 0 0 40px rgba(185,79,232,0.12), 0 24px 64px rgba(0,0,0,0.8);
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+    .frame:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--p);
+      box-shadow: 0 0 36px rgba(185,79,232,0.6), 0 0 64px rgba(185,79,232,0.25), 0 28px 64px rgba(0,0,0,0.8);
     }
     .frame img { width: 100%; display: block; }
 
@@ -100,7 +106,7 @@
     .faq-q {
       width: 100%; text-align: left; background: none; border: none;
       color: var(--t); font-family: 'Outfit', sans-serif; font-weight: 600;
-      font-size: 18px; padding: 24px 0; cursor: pointer;
+      font-size: 20px; padding: 24px 0; cursor: pointer;
       display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
       transition: color 0.2s ease;
     }
@@ -108,7 +114,7 @@
     .faq-icon { transition: transform 0.3s ease; font-size: 20px; flex-shrink: 0; line-height: 1.4; }
     .faq-q.open .faq-icon { transform: rotate(45deg); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    .faq-a-inner { padding-bottom: 24px; color: var(--m); line-height: 1.75; font-size: 16px; }
+    .faq-a-inner { padding-bottom: 24px; color: var(--m); line-height: 1.75; font-size: 17px; }
 
     /* Wins grid */
     .wins-grid {
@@ -159,6 +165,34 @@
 
     /* Hero quote strip */
     .hero-questions { border-left: 2px solid var(--bp); padding-left: 24px; }
+
+    /* Phase pills */
+    .phase-pill {
+      display: inline-flex; align-items: center; gap: 16px;
+      background: var(--s); padding: 16px 36px; border-radius: 100px;
+      border: 2px solid var(--bp);
+      box-shadow: 0 0 28px rgba(185,79,232,0.45), 0 0 56px rgba(185,79,232,0.18);
+      cursor: default;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+    }
+    .phase-pill:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 0 48px rgba(185,79,232,0.7), 0 0 80px rgba(185,79,232,0.3), 0 12px 32px rgba(0,0,0,0.5);
+    }
+    .phase-pill .pill-label {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.1em;
+      font-size: 22px;
+      color: var(--p);
+      white-space: nowrap;
+    }
+    .phase-pill .pill-divider {
+      width: 1px; height: 26px; background: var(--bp); flex-shrink: 0;
+    }
+    .phase-pill .pill-title {
+      font-family: 'Outfit', sans-serif; font-weight: 700;
+      font-size: clamp(18px,2.5vw,24px); line-height: 1.2; color: #fff;
+    }
 
     /* Glow blobs */
     .glow-blob {
@@ -220,62 +254,6 @@
   </div>
 </section>
 
-<!-- ============================================================ PROOF STRIP -->
-<section style="padding:0 0 80px;">
-  <div class="wrap">
-    <div class="proof-strip" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-      <div class="rv win-card" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 5.png')"><img src="brand_assets/review 5.png" alt="Rachel Fairfax"></div>
-      <div class="rv win-card" style="transition-delay:0.1s;cursor:zoom-in;" onclick="openLightbox('brand_assets/review 6.png')"><img src="brand_assets/review 6.png" alt="zulumaybe456"></div>
-      <div class="rv win-card" style="transition-delay:0.2s;cursor:zoom-in;" onclick="openLightbox('brand_assets/review 7.png')"><img src="brand_assets/review 7.png" alt="David Preitfellner"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ HERO COPY (below VSL) -->
-<section style="padding:0 0 80px;">
-  <div class="wrap" style="max-width:820px;">
-    <div class="rv">
-      <div style="margin-bottom:40px;display:flex;flex-direction:column;gap:12px;">
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <span style="color:var(--p);font-size:18px;flex-shrink:0;margin-top:2px;">→</span>
-          <p style="color:var(--m);font-size:17px;line-height:1.6;">A dream client finally responds to your DM.<br><span style="color:var(--t);font-weight:600;">Now what?</span></p>
-        </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <span style="color:var(--p);font-size:18px;flex-shrink:0;margin-top:2px;">→</span>
-          <p style="color:var(--m);font-size:17px;line-height:1.6;">You finally get on your first sales call.<br><span style="color:var(--t);font-weight:600;">What do you say to actually close him?</span></p>
-        </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <span style="color:var(--p);font-size:18px;flex-shrink:0;margin-top:2px;">→</span>
-          <p style="color:var(--m);font-size:17px;line-height:1.6;">The client said "yes".<br><span style="color:var(--t);font-weight:600;">Well… do you know how to write a contract to sign him?</span></p>
-        </div>
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-          <span style="color:var(--p);font-size:18px;flex-shrink:0;margin-top:2px;">→</span>
-          <p style="color:var(--m);font-size:17px;line-height:1.6;">The client signed the contract.<br><span style="color:var(--t);font-weight:600;">Now how do you make sure to deliver exactly what they expect from day 1 and not lose your first dream client a week later?</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="rv" style="transition-delay:0.12s;">
-      <div style="font-size:18px;color:var(--m);margin-bottom:16px;line-height:1.9;text-align:left;">
-        <p class="d tp" style="font-size:clamp(28px,3.5vw,42px);line-height:1.1;margin-bottom:24px;text-align:center;">THE TRUTH</p>
-        <p style="margin-bottom:8px;">Every copywriting course teaches how to write copy.</p>
-        <p style="margin-bottom:8px;">And if they are feeling very generous they might even throw an outreach method on top that hasn't worked since early 2025.</p>
-        <p style="margin-bottom:8px;">Even if you get lucky and actually get a positive response from a dream client, the chances of you fumbling that first sales call are astronomically high.</p>
-        <p style="margin-bottom:8px;">If you somehow manage to actually close the client there are so many steps after that to actually retain a client for years and get paid fairly every month.</p>
-        <p>No other copywriting coaching program prepares you for that.</p>
-      </div>
-      <p style="font-size:20px;font-weight:600;margin-bottom:52px;">
-        <span class="tp">Academy+</span> covers the full chain - from brand new outreach scripts that get consistent replies in 2026, to nailing your first sales call, to writing contracts, to onboarding your client so he keeps paying you for years instead of firing you within a week.
-      </p>
-      <div style="display:flex;justify-content:center;">
-        <a href="#apply" class="btn">Apply for Academy+</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ DIVIDER -->
-<div class="divider"></div>
-
 <!-- ============================================================ OUTREACH WINS -->
 <section style="padding:100px 0;">
   <div class="wrap">
@@ -318,7 +296,7 @@
       <p style="font-size:clamp(18px,2.4vw,30px);font-weight:700;line-height:1.4;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto;color:#B94FE8;">
         Most copywriting programs never teach you what you need to <span style="color:#F0F0F0;font-weight:800;">ACTUALLY SIGN</span> and <span style="color:#F0F0F0;font-weight:800;">KEEP</span> high paying clients.
       </p>
-      <p style="color:var(--m);font-size:17px;line-height:1.8;">This program covers everything other copywriting programs are <span class="tp" style="font-weight:700;">MISSING:</span></p>
+      <p style="color:var(--m);font-size:17px;line-height:1.8;"><strong style="color:var(--t);">This program covers everything other copywriting programs are <span class="tp">MISSING:</span></strong></p>
     </div>
 
     <div class="features-layout" style="display:grid;grid-template-columns:1fr 380px;gap:72px;align-items:start;">
@@ -328,70 +306,70 @@
         <div class="feature-row rv">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">The 5 Phase Success Roadmap</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">Your whole copywriting journey mapped out: From getting your copywriting skills client worthy all the way to handling multiple clients effortlessly. Whenever you run into a plateau, the Success Roadmap will tell you exactly what to do next, so you never get stuck on your journey.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">The 5 Phase Success Roadmap</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;">Your whole copywriting journey mapped out: From getting your copywriting skills client worthy all the way to handling multiple clients effortlessly. Whenever you run into a plateau, the Success Roadmap will tell you <strong style="color:var(--t);">exactly what to do next</strong>, so you never get stuck.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.06s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">Full Outreach System</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">5 tested scripts with the KPI data to go with them, a Google Sheets tracker from first message to close, the follow-up rules, the rate limits, the exact sequence.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">Full Outreach System</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;"><strong style="color:var(--t);">5 tested scripts</strong> with the KPI data to go with them, a Google Sheets tracker from first message to close, the follow-up rules, the rate limits, the exact sequence.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.12s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">The 2 Part Close Blueprint</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">How to run the actual sales call, how to pitch, how to handle any objection without dropping price.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">The 2 Part Close Blueprint</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;">How to run the actual sales call, how to pitch, how to <strong style="color:var(--t);">handle any objection without dropping price</strong>.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.18s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">The Day One Protocol</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">What to send to your client the same day of signing him. What to say, how to set the right expectations. How to make a client feel like they made the right call before you've written a word.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">The Day One Protocol</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;">What to send to your client <strong style="color:var(--t);">the same day of signing him</strong>. What to say, how to set the right expectations. How to make a client feel like they made the right call before you've written a word.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.24s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">The Retention Stack</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">How to keep a client past month one. How to raise rates without losing them. How to turn one good client into referrals and sign your 2nd and 3rd client without having to send a single outreach message.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">The Retention Stack</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;">How to keep a client past month one. How to <strong style="color:var(--t);">raise rates without losing them</strong>. How to turn one good client into referrals and sign your 2nd and 3rd client <strong style="color:var(--t);">without sending a single outreach message</strong>.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.30s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">Direct 1:1 Support With Anam Personally</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">2x 1:1 calls per month. A free onboarding call and extra 1:1 calls for emergencies like preparing you when you're about to get on your first ever sales call.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">Direct 1:1 Support With Anam Personally</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;"><strong style="color:var(--t);">2x 1:1 calls per month.</strong> A free onboarding call and <strong style="color:var(--t);">extra 1:1 calls</strong> for emergencies like preparing you when you're about to get on your first ever sales call.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.36s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">Weekly Group Coaching Calls</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">Live Q&amp;A every Tuesday, live masterclasses, live copy reviews. Topics voted on by the community for next week's call. Every call is recorded and saved in the MP Academy+ vault. Even if you can't make it live, you will never miss anything.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">Weekly Group Coaching Calls</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;">Live Q&amp;A every Tuesday, live masterclasses, live copy reviews. Every call is <strong style="color:var(--t);">recorded and saved</strong> in the MP Academy+ vault. Even if you can't make it live, you will never miss anything.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.42s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">Full Template Suite</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
-              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);flex-shrink:0;font-size:14px;margin-top:2px;">→</span><p style="color:var(--m);font-size:15px;line-height:1.75;">Templates on how to structure and write any piece of copy (Sales Pages, VSL's, YouTube scripts, etc.)</p></div>
-              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);flex-shrink:0;font-size:14px;margin-top:2px;">→</span><p style="color:var(--m);font-size:15px;line-height:1.75;">A full copywriting library of some of the highest performing pieces of copy by Iman Gadzhi, Charlie Morgan, Alex Hormozi and other industry leaders for you to study</p></div>
-              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);flex-shrink:0;font-size:14px;margin-top:2px;">→</span><p style="color:var(--m);font-size:15px;line-height:1.75;">Offer Deck Template to give your clients instant clarity on what you can deliver</p></div>
-              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);flex-shrink:0;font-size:14px;margin-top:2px;">→</span><p style="color:var(--m);font-size:15px;line-height:1.75;">Pre-call questionnaire to gather important client info before your sales call</p></div>
-              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);flex-shrink:0;font-size:14px;margin-top:2px;">→</span><p style="color:var(--m);font-size:15px;line-height:1.75;">Client Onboarding Roadmap, to give yourself and your client a custom week by week roadmap on deadlines and deliverables so things go smoothly from day 1</p></div>
-            </div>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">Exclusive Access To My Private MP Academy+ Discord Community</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.75;">Becoming a copywriter is a lonely road with your peers constantly questioning and judging you. In our private discord you'll find a group of young, hungry, like-minded copywriters who all share the same goal. <strong style="color:var(--t);">Anam is there every day</strong>, answering questions, reviewing copy, and tracking your progress.</p>
           </div>
         </div>
         <div class="feature-row rv" style="transition-delay:0.48s;">
           <div class="feature-dot"></div>
           <div>
-            <p style="font-weight:700;font-size:17px;margin-bottom:6px;color:var(--p);">Exclusive Access To My Private MP Academy+ Discord Community</p>
-            <p style="color:var(--m);font-size:15px;line-height:1.75;">Becoming a copywriter is a lonely road with your peers constantly questioning and judging you, because they don't understand what you're trying to achieve. In our private discord community you will find a group of young, hungry, like minded copywriters who all share the same goal as you. Everybody supports each other. Anam will also be there every day, answering questions, reviewing copy and tracking your progress consistently.</p>
+            <p style="font-weight:700;font-size:20px;margin-bottom:6px;color:var(--p);">Full Template Suite</p>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);font-weight:700;flex-shrink:0;font-size:22px;margin-top:0px;">→</span><p style="color:var(--m);font-size:17px;line-height:1.75;"><strong style="color:var(--t);">Templates</strong> on how to structure and write any piece of copy (Sales Pages, VSL's, YouTube scripts, etc.)</p></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);font-weight:700;flex-shrink:0;font-size:22px;margin-top:0px;">→</span><p style="color:var(--m);font-size:17px;line-height:1.75;">A <strong style="color:var(--t);">full copywriting library</strong> of the highest performing copy by Iman Gadzhi, Charlie Morgan, Alex Hormozi and other industry leaders for you to study</p></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);font-weight:700;flex-shrink:0;font-size:22px;margin-top:0px;">→</span><p style="color:var(--m);font-size:17px;line-height:1.75;"><strong style="color:var(--t);">Offer Deck Template</strong> to give your clients instant clarity on what you can deliver</p></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);font-weight:700;flex-shrink:0;font-size:22px;margin-top:0px;">→</span><p style="color:var(--m);font-size:17px;line-height:1.75;"><strong style="color:var(--t);">Pre-call questionnaire</strong> to gather important client info before your sales call</p></div>
+              <div style="display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--p);font-weight:700;flex-shrink:0;font-size:22px;margin-top:0px;">→</span><p style="color:var(--m);font-size:17px;line-height:1.75;"><strong style="color:var(--t);">Client Onboarding Roadmap</strong> - a custom week by week roadmap on deadlines and deliverables so things go smoothly from day 1</p></div>
+            </div>
           </div>
         </div>
 
@@ -399,22 +377,13 @@
 
       <!-- Right: screenshot stack -->
       <div style="display:flex;flex-direction:column;gap:20px;position:sticky;top:96px;">
-        <div class="rv frame" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/30 day roadmap.png')"><img src="brand_assets/30 day roadmap.png" alt="30 day roadmap"></div>
-        <div class="rv frame" style="transition-delay:0.12s;cursor:zoom-in;" onclick="openLightbox('brand_assets/MP Academy Plus Resources.png')"><img src="brand_assets/MP Academy Plus Resources.png" alt="MP Academy+ Resources"></div>
-        <div class="rv frame" style="transition-delay:0.24s;cursor:zoom-in;" onclick="openLightbox('brand_assets/Discord Group Calls.png')"><img src="brand_assets/Discord Group Calls.png" alt="Discord group calls"></div>
-        <div class="rv frame" style="transition-delay:0.36s;cursor:zoom-in;" onclick="openLightbox('brand_assets/Free Discord (Outreach Channel).png')"><img src="brand_assets/Free Discord (Outreach Channel).png" alt="Free Discord outreach channel"></div>
+        <div class="rv frame" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/MP Academy Plus Course Overview.png')"><img src="brand_assets/MP Academy Plus Course Overview.png" alt="MP Academy+ Course Overview"></div>
+        <div class="rv frame" style="transition-delay:0.12s;cursor:zoom-in;" onclick="openLightbox('brand_assets/30 day roadmap.png')"><img src="brand_assets/30 day roadmap.png" alt="30 day roadmap"></div>
+        <div class="rv frame" style="transition-delay:0.24s;cursor:zoom-in;" onclick="openLightbox('brand_assets/MP Academy Plus Resources.png')"><img src="brand_assets/MP Academy Plus Resources.png" alt="MP Academy+ Resources"></div>
+        <div class="rv frame" style="transition-delay:0.36s;cursor:zoom-in;" onclick="openLightbox('brand_assets/Discord Group Calls.png')"><img src="brand_assets/Discord Group Calls.png" alt="Discord group calls"></div>
+        <div class="rv frame" style="transition-delay:0.48s;cursor:zoom-in;" onclick="openLightbox('brand_assets/Free Discord (Outreach Channel).png')"><img src="brand_assets/Free Discord (Outreach Channel).png" alt="Free Discord outreach channel"></div>
       </div>
 
-    </div>
-
-    <!-- Course overview image — full width, below both columns -->
-    <div class="rv" style="margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:16px;">
-      <div class="arrow-down">
-        <svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="frame" style="width:100%;cursor:zoom-in;" onclick="openLightbox('brand_assets/MP Academy Plus Course Overview.png')">
-        <img src="brand_assets/MP Academy Plus Course Overview.png" alt="MP Academy+ Course Overview" style="width:100%;display:block;">
-      </div>
     </div>
 
     <div class="rv" style="margin-top:52px;display:flex;justify-content:center;">
@@ -426,20 +395,118 @@
 <!-- ============================================================ DIVIDER -->
 <div class="divider"></div>
 
-<section style="padding:60px 0 100px;">
+<!-- ============================================================ HOW IT WORKS -->
+<section style="padding:100px 0;">
   <div class="wrap">
-    <div class="rv" style="margin-bottom:52px;text-align:center;">
-      <p class="d" style="font-size:clamp(36px,5vw,56px);line-height:1;">WHAT OUR <span class="tp">MEMBERS</span> ARE SAYING</p>
+    <div class="rv" style="margin-bottom:72px;text-align:center;">
+      <p class="d" style="font-size:clamp(36px,5vw,56px);line-height:1;margin-bottom:16px;">THE 5 PHASE <span class="tp">SUCCESS ROADMAP</span></p>
+      <p style="color:var(--t);font-size:clamp(18px,2vw,22px);max-width:600px;margin:0 auto;line-height:1.6;font-weight:500;">From zero to signing your <strong style="color:var(--p);">first 3 clients</strong>, step by step.</p>
     </div>
-    <div class="reviews-grid rv">
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 1.png')"><img src="brand_assets/review 1.png" alt="AB review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 2.png')"><img src="brand_assets/review 2.png" alt="Vũ Anh Trần Nguyễn review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 3.png')"><img src="brand_assets/review 3.png" alt="Ayush Patel review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 4.png')"><img src="brand_assets/review 4.png" alt="Reeyen Patel review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 5.png')"><img src="brand_assets/review 5.png" alt="Rachel Fairfax review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 6.png')"><img src="brand_assets/review 6.png" alt="zulumaybe456 review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 7.png')"><img src="brand_assets/review 7.png" alt="David Preitfellner review"></div>
-      <div class="review-item" style="cursor:zoom-in;" onclick="openLightbox('brand_assets/review 8.png')"><img src="brand_assets/review 8.png" alt="AshuRex review"></div>
+
+    <!-- Timeline -->
+    <div style="max-width:780px;margin:0 auto;">
+
+      <!-- DAY 1 -->
+      <div class="rv" style="margin-bottom:56px;text-align:center;">
+        <div style="display:flex;justify-content:center;margin-bottom:28px;">
+          <div class="phase-pill">
+            <span class="pill-label">DAY 1</span>
+            <span class="pill-divider"></span>
+            <span class="pill-title">Start Without Guesswork</span>
+          </div>
+        </div>
+        <p style="color:var(--m);font-size:17px;line-height:1.8;">You watch the orientation module, fill out the onboarding form, and book your <strong style="color:var(--t);">first 1-on-1 with Anam</strong>. By the end of day 1, you have a <strong style="color:var(--t);">complete custom roadmap</strong> that you simply have to follow.</p>
+      </div>
+
+      <!-- connector arrow -->
+      <div style="display:flex;justify-content:center;margin-bottom:56px;">
+        <svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- PHASE 1 -->
+      <div class="rv" style="margin-bottom:56px;text-align:center;transition-delay:0.08s;">
+        <div style="display:flex;justify-content:center;margin-bottom:28px;">
+          <div class="phase-pill">
+            <span class="pill-label">PHASE 1</span>
+            <span class="pill-divider"></span>
+            <span class="pill-title">Get Client-Ready Before You Touch Outreach</span>
+          </div>
+        </div>
+        <p style="color:var(--m);font-size:17px;line-height:1.8;">Before you send a single DM, <strong style="color:var(--t);">Anam reviews your copy and approves your level</strong>. This matters more than it sounds. Most people go straight to outreach with copy that isn't ready, get ignored for months, burn lead after lead and conclude the outreach method doesn't work. <strong style="color:var(--t);">It does work</strong> - their copy just wasn't ready.<br><br>You won't make that mistake. You build your offer, get your profile approved, and only then start outreaching - with <strong style="color:var(--t);">5 tested scripts, a daily outreach goal, and weekly tracker reviews</strong> with Anam to catch what isn't working before it becomes a habit.</p>
+      </div>
+
+      <!-- connector arrow -->
+      <div style="display:flex;justify-content:center;margin-bottom:56px;">
+        <svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="rv" style="margin-bottom:56px;text-align:center;transition-delay:0.12s;">
+        <div style="display:flex;justify-content:center;margin-bottom:28px;">
+          <div class="phase-pill">
+            <span class="pill-label">PHASE 2</span>
+            <span class="pill-divider"></span>
+            <span class="pill-title">Making Your First Sales Call Feel Effortless</span>
+          </div>
+        </div>
+        <p style="color:var(--m);font-size:17px;line-height:1.8;">A prospect replies. Now what?<br><br>You watch the closing module. You run a couple of <strong style="color:var(--t);">practice sales calls with Anam first</strong> to go into your first call like you've done it a few times before, because you have. And when you get on the real call, you're not hoping you remember what to say - <strong style="color:var(--t);">you've already said it</strong>. You've already handled the most common objections. You've already closed the client. The actual sales call becomes <strong style="color:var(--t);">just another sales call, not your first</strong>.<br><br>After the call, you debrief with Anam. You send the contract to your client and finally collect your <strong style="color:var(--t);">first ever payment from copywriting</strong>.</p>
+      </div>
+
+      <!-- connector arrow -->
+      <div style="display:flex;justify-content:center;margin-bottom:56px;">
+        <svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="rv" style="margin-bottom:56px;text-align:center;transition-delay:0.16s;">
+        <div style="display:flex;justify-content:center;margin-bottom:28px;">
+          <div class="phase-pill">
+            <span class="pill-label">PHASE 3</span>
+            <span class="pill-divider"></span>
+            <span class="pill-title">How To Actually Deliver For Your First Client</span>
+          </div>
+        </div>
+        <p style="color:var(--m);font-size:17px;line-height:1.8;">This is where <strong style="color:var(--t);">most copywriters lose everything they worked for</strong>. They don't know how to set the right expectations. They don't know how to communicate with their client. They deliver things the client didn't expect. The client loses confidence and a week later <strong style="color:var(--t);">he's done with you</strong>.<br><br>To avoid all that you will watch the onboarding module and <strong style="color:var(--t);">build the client action plan with Anam</strong> before you deliver anything. Your client gets a day-one roadmap from you - what's happening, when, and what they can expect. They feel like they <strong style="color:var(--t);">made the right decision before you've written a word</strong>.</p>
+      </div>
+
+      <!-- connector arrow -->
+      <div style="display:flex;justify-content:center;margin-bottom:56px;">
+        <svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="rv" style="margin-bottom:56px;text-align:center;transition-delay:0.20s;">
+        <div style="display:flex;justify-content:center;margin-bottom:28px;">
+          <div class="phase-pill">
+            <span class="pill-label">PHASE 4</span>
+            <span class="pill-divider"></span>
+            <span class="pill-title">Keep Client #1 Happy and Work Towards Client #2</span>
+          </div>
+        </div>
+        <p style="color:var(--m);font-size:17px;line-height:1.8;"><strong style="color:var(--t);">Anam reviews your copy before the client sees it</strong>. Even if you're still not 100% confident in your writing, you will <strong style="color:var(--t);">never have to send it to your client without getting it approved first</strong>.<br><br>After you've laid the groundwork for client one, you get back into outreach. You take all your confidence and experience from your first client into your second one and then your third one.</p>
+      </div>
+
+      <!-- connector arrow -->
+      <div style="display:flex;justify-content:center;margin-bottom:56px;">
+        <svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- PHASE 5 -->
+      <div class="rv" style="text-align:center;transition-delay:0.24s;">
+        <div style="display:flex;justify-content:center;margin-bottom:28px;">
+          <div class="phase-pill">
+            <span class="pill-label">PHASE 5</span>
+            <span class="pill-divider"></span>
+            <span class="pill-title">Sign Client #2 and Client #3</span>
+          </div>
+        </div>
+        <p style="color:var(--m);font-size:17px;line-height:1.8;"><strong style="color:var(--t);">The hardest part is behind you.</strong> You've got a live client, a process that works, and your first case study to prove to your second client that you know what you're doing. <strong style="color:var(--t);">Signing your first client is always the hardest part.</strong> To sign the second one you just repeat the process.</p>
+      </div>
+
+    </div>
+
+    <div class="rv" style="margin-top:64px;display:flex;justify-content:center;">
+      <a href="#apply" class="btn">Apply for Academy+</a>
     </div>
   </div>
 </section>
@@ -462,23 +529,23 @@
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You know copywriting fundamentals, but have no idea how to actually convince a dream client to wanna work with you and pay you</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You know copywriting fundamentals, but have <strong style="color:var(--t);">no idea how to convince a dream client</strong> to work with you and pay you</p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You've landed a client, had no idea what to do next, and got fired a week later</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You've landed a client, had no idea what to do next, and <strong style="color:var(--t);">got fired a week later</strong></p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You want someone to actually look at your work and make sure your copy is client-worthy before you start outreach, so you don't have to deal with imposter syndrome any more</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You want someone to actually look at your work and make sure your copy is <strong style="color:var(--t);">client-worthy before you start outreach</strong>, so you don't have to deal with imposter syndrome any more</p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You're tired of feeling alone and isolated from your peers, who don't understand what you're trying to achieve</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You're tired of feeling <strong style="color:var(--t);">alone and isolated</strong> from your peers, who don't understand what you're trying to achieve</p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You can put in 2–3 hours a day, consistently, for at least 3 months</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You can put in <strong style="color:var(--t);">2–3 hours a day, consistently, for at least 3 months</strong></p>
           </div>
         </div>
       </div>
@@ -488,19 +555,19 @@
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#ef4444;font-weight:700;flex-shrink:0;margin-top:1px;">✕</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You're expecting £10K in the first 30–60 days. It's not impossible, but highly unlikely. If you're looking for a get-rich-quick scheme, this is not for you.</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You're expecting <strong style="color:var(--t);">£10K in the first 30–60 days</strong>. It's not impossible, but highly unlikely. If you're looking for a get-rich-quick scheme, this is not for you.</p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#ef4444;font-weight:700;flex-shrink:0;margin-top:1px;">✕</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You want a system that runs without you</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You want a system that <strong style="color:var(--t);">runs without you</strong></p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#ef4444;font-weight:700;flex-shrink:0;margin-top:1px;">✕</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You're still deciding whether copywriting is the thing you want to commit to. Figure that out first.</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You're <strong style="color:var(--t);">still deciding</strong> whether copywriting is the thing you want to commit to. Figure that out first.</p>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <span style="color:#ef4444;font-weight:700;flex-shrink:0;margin-top:1px;">✕</span>
-            <p style="color:var(--m);font-size:15px;line-height:1.7;">You don't know the copywriting basics yet. There is a free 3-hour course on my YouTube channel that teaches you everything you need to know. Watch that first, understand the basics and then come back.</p>
+            <p style="color:var(--m);font-size:17px;line-height:1.7;">You <strong style="color:var(--t);">don't know the copywriting basics yet</strong>. There is a free 3-hour course on my YouTube channel that teaches you everything you need to know. Watch that first, understand the basics and then come back.</p>
           </div>
         </div>
       </div>
@@ -517,20 +584,9 @@
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(185,79,232,0.1) 0%,transparent 55%);pointer-events:none;"></div>
   <div class="wrap" style="position:relative;z-index:1;">
     <div style="max-width:600px;margin:0 auto;text-align:center;" class="rv">
-      <p class="d" style="font-size:clamp(64px,9vw,108px);line-height:0.9;margin-bottom:12px;">
-        <span style="color:rgba(255,255,255,0.35);font-size:0.38em;letter-spacing:0.05em;vertical-align:middle;margin-right:8px;">ONLY</span><span class="tp">£149</span><span style="color:rgba(255,255,255,0.35);font-size:0.55em;">/month</span>
-      </p>
-      <p style="color:var(--m);font-size:18px;margin-bottom:44px;line-height:1.7;">
-        Cancel anytime.
-      </p>
-      <a href="#" class="btn btn-lg">Apply for Academy+</a>
+      <a href="#" class="btn btn-lg" style="font-size:24px;padding:28px 72px;border-radius:14px;">Apply for Academy+</a>
     </div>
 
-    <div class="rv" style="margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;transition-delay:0.18s;">
-      <div class="win-card"><img src="Outreach Wins/reply-asking-prices.png" alt="Prospect asking for prices"></div>
-      <div class="win-card"><img src="Outreach Wins/sales-4234-eur.png" alt="€4,234 total sales"></div>
-      <div class="win-card"><img src="Outreach Wins/krish-strategy-call.png" alt="Krish strategy call booked"></div>
-    </div>
   </div>
 </section>
 
@@ -546,27 +602,27 @@
     <div>
       <div class="faq-item rv">
         <button class="faq-q" onclick="faqToggle(this)">I've already bought courses that taught me nothing. Why is this different?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p class="faq-a-inner">Most other copywriting programs stop at writing and outreach. They don't prep you for the sales calls. They don't show you how to create contracts. They don't tell you what to do on day 1 when you just signed your first client or how to keep them past month one. Academy+ covers the whole chain, from your first DM to a happy client that will work with you for years.</p></div>
+        <div class="faq-a"><p class="faq-a-inner">Most other copywriting programs stop at writing and outreach. They don't prep you for the sales calls. They don't show you how to create contracts. They don't tell you what to do <strong style="color:var(--t);">on day 1 when you just signed your first client</strong> or how to keep them past month one. Academy+ covers <strong style="color:var(--t);">the whole chain</strong>, from your first DM to a happy client that will work with you for years.</p></div>
       </div>
       <div class="faq-item rv" style="transition-delay:0.06s;">
         <button class="faq-q" onclick="faqToggle(this)">Is Anam actually available, or do I get handed off to someone else?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p class="faq-a-inner">Anam checks in multiple times a day. Right now there are no other coaches. You won't be handed off to somebody else. Yes, the community members help each other as well — that's what the community is for. But all copy reviews will be done by Anam and any other questions will also get answered directly by him.</p></div>
+        <div class="faq-a"><p class="faq-a-inner"><strong style="color:var(--t);">Anam checks in multiple times a day.</strong> Right now there are no other coaches. You won't be handed off to somebody else. All copy reviews will be done by Anam and any other questions will also get answered directly by him.</p></div>
       </div>
       <div class="faq-item rv" style="transition-delay:0.12s;">
         <button class="faq-q" onclick="faqToggle(this)">What if my English isn't perfect?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p class="faq-a-inner">Speaking fluent English is a big advantage, but Jel just signed his second client in 3 months of joining and he still has to work on his English. You can still sign clients even if your English still needs work, but it will be a lot harder.</p></div>
+        <div class="faq-a"><p class="faq-a-inner">Speaking fluent English is a big advantage, but Jel just <strong style="color:var(--t);">signed his second client in 3 months</strong> of joining and he still has to work on his English. You can still sign clients even if your English still needs work, but it will be a lot harder.</p></div>
       </div>
       <div class="faq-item rv" style="transition-delay:0.18s;">
         <button class="faq-q" onclick="faqToggle(this)">How long until I land my first client?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p class="faq-a-inner">That completely depends on how much time and effort you can invest and how coachable you are. The mindset module teaches you how to think like a top 1% copywriter to sign your first client in as little as 45 days. That's what our most dedicated students were able to do. But realistically it should take you less than 3 months to sign your first client.</p></div>
+        <div class="faq-a"><p class="faq-a-inner">That completely depends on how much time and effort you can invest and how coachable you are. The mindset module teaches you how to think like a top 1% copywriter to sign your first client <strong style="color:var(--t);">in as little as 45 days</strong>. But realistically it should take you <strong style="color:var(--t);">less than 3 months</strong> to sign your first client.</p></div>
       </div>
       <div class="faq-item rv" style="transition-delay:0.24s;">
         <button class="faq-q" onclick="faqToggle(this)">What are the masterclasses?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p class="faq-a-inner">Weekly calls voted on by the community, different topic every week. We've had sales call masterclasses, sales page masterclasses, VSL masterclasses, mindset and time management masterclasses, outreach masterclasses and much more. On every Tuesday's group call the community gets to decide which masterclass they want to see next week. All calls are recorded, so if you miss one, you can just rewatch it.</p></div>
+        <div class="faq-a"><p class="faq-a-inner">Weekly calls voted on by the community, different topic every week. We've had sales call masterclasses, sales page masterclasses, VSL masterclasses, mindset and time management masterclasses, outreach masterclasses and much more. <strong style="color:var(--t);">All calls are recorded</strong>, so if you miss one, you can just rewatch it.</p></div>
       </div>
       <div class="faq-item rv" style="transition-delay:0.30s;">
         <button class="faq-q" onclick="faqToggle(this)">What's the affiliate program?<span class="faq-icon">+</span></button>
-        <div class="faq-a"><p class="faq-a-inner">If you bring someone new into Academy+ you will get a 30% commission if they use your affiliate link. Three referrals almost covers your entire membership for the month.</p></div>
+        <div class="faq-a"><p class="faq-a-inner">If you bring someone new into Academy+ you will get a <strong style="color:var(--t);">30% commission</strong>. Three referrals almost covers your entire membership for the month.</p></div>
       </div>
     </div>
   </div>
