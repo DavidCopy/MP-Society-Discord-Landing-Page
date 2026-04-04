@@ -251,8 +251,15 @@
         <p style="color:var(--m);font-size:14px;letter-spacing:0.08em;text-transform:uppercase;">Watch</p>
       </div>
     </div>
+    <div class="rv" style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div class="arrow-down"><svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <a href="#apply" class="btn" style="font-size:20px;padding:22px 60px;">Apply for Academy+</a>
+    </div>
   </div>
 </section>
+
+<!-- ============================================================ DIVIDER -->
+<div class="divider"></div>
 
 <!-- ============================================================ OUTREACH WINS -->
 <section style="padding:100px 0;">
@@ -278,9 +285,10 @@
       <div class="rv win-card" style="transition-delay:0.36s;" onclick="openLightbox('Outreach Wins/reply-youve-got-talent.png')"><img src="Outreach Wins/reply-youve-got-talent.png" alt="You've got some talent"></div>
       <div class="rv win-card" style="transition-delay:0.42s;" onclick="openLightbox('Outreach Wins/reply-asking-prices.png')"><img src="Outreach Wins/reply-asking-prices.png" alt="Prospect asks for prices"></div>
       <div class="rv win-card" style="transition-delay:0.48s;" onclick="openLightbox('Outreach Wins/reply-show-me-more.png')"><img src="Outreach Wins/reply-show-me-more.png" alt="Show me more"></div>
-      <div class="rv win-card" style="transition-delay:0.54s;" onclick="openLightbox('Outreach Wins/calendly-elliot-booked.png')"><img src="Outreach Wins/calendly-elliot-booked.png" alt="Elliot Calendly booking"></div>
+      <div class="rv win-card" style="transition-delay:0.54s;grid-column:2;" onclick="openLightbox('Outreach Wins/calendly-elliot-booked.png')"><img src="Outreach Wins/calendly-elliot-booked.png" alt="Elliot Calendly booking"></div>
     </div>
-    <div class="rv" style="margin-top:52px;display:flex;justify-content:center;">
+    <div class="rv" style="margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div class="arrow-down"><svg width="24" height="32" viewBox="0 0 24 32" fill="none"><path d="M12 0v24M4 18l8 10 8-10" stroke="#B94FE8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <a href="#apply" class="btn">Apply for Academy+</a>
     </div>
   </div>
@@ -705,6 +713,7 @@
       answer.style.maxHeight = answer.scrollHeight + 40 + 'px';
     }
   }
+
 
   // VSL play button hover
   const playBtn = document.getElementById('play-btn');
